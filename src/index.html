@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+  <head> </head>
+  <body>
+    <h1>Test page for iframe error objects</h1>
+    <div>
+      <div>Note: for best results, please run with flags: E.g.,:</div>
+      <pre style="white-space: break-spaces">
+"C:\Program Files (x86)\Microsoft\Edge\Application\msedge.exe" --js-flags="--expose-gc --enable-precise-memory-info"</pre
+      >
+      <div>You will need to quit any existing Edge/Chrome processes first via Task Manager before these flags take effect.</div>
+    </div>
+    <div>
+      <span>Stats: </span>
+      <span>Iteration #</span><span id="iteration-number"></span> <span>, memory = </span><span id="memory"></span>
+      &nbsp;&nbsp;
+      <button id="copy-stats">Copy stats to clipboard</button>
+    </div>
+
+    <label for="after-adding-iframe">After adding iframe:</label>
+    <select id="after-adding-iframe">
+      <option value="nothing">Do nothing -- (no leak)</option>
+      <option value="change-iframe-background">Change iframe background -- (no leak)</option>
+      <option value="log-hello-world-inside-iframe">Log "Hello World" INSIDE iframe -- (no leak)</option>
+      <option value="log-error-in-iframe">Log error INSIDE iframe -- (**CAUSES A LEAK**)</option>
+      <option value="throw-unhandled-error-in-iframe">Throw unhandled error INSIDE iframe -- (**CAUSES A LEAK**)</option>
+      <option value="throw-handled-error-in-iframe">Handle a thrown error INSIDE iframe -- (no leak)</option>
+      <option value="log-error-outside">Log error *OUTSIDE* of iframe -- (no leak)</option>
+    </select>
+
+    <button id="add-iframe">Add iframe</button>
+    <button id="remove-iframe">Remove iframe</button>
+
+    <hr />
+    <h2>Run it in a loop?</h2>
+    <label for="stop-at-iteration-number">Stop at iteration #:</label>
+    <input type="number" id="stop-at-iteration-number" value="100" />
+    <button id="loop-go-or-stop">Go!</button>
+    <hr />
+
+    <div id="main"></div>
+
+    <script src="./index.js"></script>
+  </body>
+</html>
