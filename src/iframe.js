@@ -11,6 +11,30 @@ window.intentionallyLogErrorToConsole = function () {
   console.error(new Error("This is an error object, intentionally logged to console"));
 };
 
+window.intentionallyLogStructuredCloneErrorToConsole = function () {
+  const originalError = new Error("This is an error object, which will be structured cloned, intentionally logged to console");
+  console.error(structuredClone(originalError));
+};
+
+window.intentionallyLogStringifiedErrorToConsole = function () {
+  const originalError = new Error("This is an error object, which will be stringified, intentionally logged to console");
+  console.error(JSON.stringify(originalError, null, 3));
+};
+
+window.intentionallyLogObjectToConsole = function () {
+  const originalError = new Error("This a message string from an error object, which will be put into a new object before logging.");
+  console.error({ message: originalError.message });
+};
+
+window.intentionallyLogWeakRefObjectToConsole = function () {
+  console.error(new WeakRef({ message: "this is a message from an object wrapped in WeakRef" }));
+};
+
+window.intentionallyLogPrettyStringToConsole = function () {
+  const originalError = new Error("This is an error object that will be pretty printed");
+  console.error(JSON.stringify({ ...originalError }, null, 3));
+};
+
 window.throwUnhandledError = function () {
   setTimeout(() => {
     throw new Error("This is an unhandled error that's thrown");

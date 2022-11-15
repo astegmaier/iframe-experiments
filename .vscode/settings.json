@@ -3,5 +3,6 @@
   "files.exclude": {
     "**/node_modules": true
   },
-  "prettier.printWidth": 150
+  "prettier.printWidth": 150,
+  "editor.tabSize": 2
 }

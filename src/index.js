@@ -70,6 +70,21 @@ function doPostAddingScenario(iframe) {
     case "log-error-outside":
       console.log(new Error("Intentionally logging error on outside of iframe"));
       return;
+    case "log-structured-clone-error-in-iframe":
+      iframe.contentWindow.intentionallyLogStructuredCloneErrorToConsole();
+      return;
+    case "log-stringified-error-in-iframe":
+      iframe.contentWindow.intentionallyLogStringifiedErrorToConsole();
+      return;
+    case "log-object-in-iframe":
+      iframe.contentWindow.intentionallyLogObjectToConsole();
+      return;
+    case "log-weakref-object-in-iframe":
+      iframe.contentWindow.intentionallyLogWeakRefObjectToConsole();
+      return;
+    case "log-pretty-print-string-in-iframe":
+      iframe.contentWindow.intentionallyLogPrettyStringToConsole();
+      return;
     default:
       alert("Invalid value for after-adding-iframe dropdown");
       return;
@@ -109,6 +124,8 @@ document.getElementById("copy-stats").onclick = () => {
       alert("Could not write to clipboard, but outputting them to the console.");
     });
 };
+
+document.getElementById("update-heap-stats").onclick = () => updateIterationAndHeapSizeDisplay();
 
 let isLoopOn = false;
 const goOrStopButton = document.getElementById("loop-go-or-stop");

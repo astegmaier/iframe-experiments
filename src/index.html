@@ -15,6 +15,7 @@
       <span>Iteration #</span><span id="iteration-number"></span> <span>, memory = </span><span id="memory"></span>
       &nbsp;&nbsp;
       <button id="copy-stats">Copy stats to clipboard</button>
+      <button id="update-heap-stats">Update heap size stats</button>
     </div>
 
     <label for="after-adding-iframe">After adding iframe:</label>
@@ -26,6 +27,11 @@
       <option value="throw-unhandled-error-in-iframe">Throw unhandled error INSIDE iframe -- (**CAUSES A LEAK**)</option>
       <option value="throw-handled-error-in-iframe">Handle a thrown error INSIDE iframe -- (no leak)</option>
       <option value="log-error-outside">Log error *OUTSIDE* of iframe -- (no leak)</option>
+      <option value="log-structured-clone-error-in-iframe">Log structured clone error INSIDE iframe -- (**CAUSES A LEAK**)</option>
+      <option value="log-stringified-error-in-iframe">Log stringified error INSIDE iframe -- (no leak)</option>
+      <option value="log-object-in-iframe">Log an object with properties INSIDE iframe -- (**CAUSES A LEAK**)</option>
+      <option value="log-weakref-object-in-iframe">Log a WeakRef object INSIDE iframe -- (**CAUSES A LEAK**)</option>
+      <option value="log-pretty-print-string-in-iframe">Log a pretty-print string INSIDE iframe -- (TBD)</option>
     </select>
 
     <button id="add-iframe">Add iframe</button>
