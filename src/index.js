@@ -85,6 +85,14 @@ function doPostAddingScenario(iframe) {
     case "log-pretty-print-string-in-iframe":
       iframe.contentWindow.intentionallyLogPrettyStringToConsole();
       return;
+    case "override-console-error-in-iframe-prod":
+      overrideConsoleForIframeProd(iframe.contentWindow);
+      iframe.contentWindow.intentionallyLogErrorToConsole();
+      return;
+    case "override-console-error-in-iframe-fixed":
+      overrideConsoleForIframeFixed(iframe.contentWindow);
+      iframe.contentWindow.intentionallyLogErrorToConsole();
+      return;
     default:
       alert("Invalid value for after-adding-iframe dropdown");
       return;
@@ -170,4 +178,38 @@ async function updateIterationAndHeapSizeDisplay() {
 
   document.getElementById("iteration-number").textContent = iteration;
   document.getElementById("memory").textContent = getUsedJsHeapSize();
+}
+
+function overrideConsoleForIframeFixed(iframeWindow) {
+  const originalConsoleError = iframeWindow.window.console.error;
+  iframeWindow.window.console.error = function (...args) {
+    const newArgs = args.filter((arg) => {
+      if (arg instanceof iframeWindow.window.Error) {
+        console.log("DID filter out iframe Error from logs.");
+        return false;
+      }
+      console.log("DID NOT filter out iframe Error from logs.");
+      return true;
+    });
+    if (newArgs.length > 0) {
+      originalConsoleError(...newArgs);
+    }
+  };
+}
+
+function overrideConsoleForIframeProd(iframeWindow) {
+  const originalConsoleError = iframeWindow.window.console.error;
+  iframeWindow.window.console.error = function (...args) {
+    const newArgs = args.filter((arg) => {
+      if (arg instanceof Error) {
+        console.log("DID filter out iframe Error from logs.");
+        return false;
+      }
+      console.log("DID NOT filter out iframe Error from logs.");
+      return true;
+    });
+    if (newArgs.length > 0) {
+      originalConsoleError(...newArgs);
+    }
+  };
 }
