@@ -11,6 +11,11 @@ window.intentionallyLogErrorToConsole = function () {
   console.error(new Error("This is an error object, intentionally logged to console"));
 };
 
+window.intentionallyLogFunctionToConsole = function () {
+  const myFunc = () => "foo";
+  console.error(myFunc);
+};
+
 window.intentionallyLogStructuredCloneErrorToConsole = function () {
   const originalError = new Error("This is an error object, which will be structured cloned, intentionally logged to console");
   console.error(structuredClone(originalError));

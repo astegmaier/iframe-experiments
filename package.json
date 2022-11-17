@@ -1,7 +1,7 @@
 {
   "name": "iframe-experiments",
   "version": "1.0.0",
-  "description": "Testing iframe memory leaks",
+  "description": "A playground to test iframe memory leaks",
   "scripts": {
     "serve": "http-server src"
   },

@@ -61,6 +61,9 @@ function doPostAddingScenario(iframe) {
     case "log-error-in-iframe":
       iframe.contentWindow.intentionallyLogErrorToConsole();
       return;
+    case "log-function-in-iframe":
+      iframe.contentWindow.intentionallyLogFunctionToConsole();
+      return;
     case "throw-unhandled-error-in-iframe":
       iframe.contentWindow.throwUnhandledError();
       return;
@@ -209,6 +212,35 @@ function overrideConsoleForIframeProd(iframeWindow) {
       return true;
     });
     if (newArgs.length > 0) {
+      originalConsoleError(...newArgs);
+    }
+  };
+}
+
+function overrideConsoleErrorToStringifyNonPrimitives(iframeWindow) {
+  const windowContext = iframeWindow.window;
+  windowContext.console.error = function (...args) {
+    let didError = false;
+    const newArgs = args.map((arg) => {
+      // Non-primitive values cause the memory leak.
+      try {
+        if (typeof arg === "object" && arg !== null) {
+          return JSON.stringify(arg); // TODO: This doesn't work with errors. Do we need something better?
+        } else if (arg === "function") {
+          return `function: ${arg.name}`; // TODO: does name always have a value (anonymous functions)?
+        }
+      } catch (e) {
+        didError = true;
+        return `<Error stringifying ${typeof arg} argument>`;
+      }
+
+      // TODO:
+      return arg;
+    });
+    if (newArgs.length > 0) {
+      if (didError) {
+        originalConsoleError(`Logging non-primitive values from an iframe can cause memory leaks. We attempted to stringify something, but failed.`);
+      }
       originalConsoleError(...newArgs);
     }
   };
