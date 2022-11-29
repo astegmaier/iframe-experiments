@@ -55,3 +55,10 @@ window.throwHandledError = function () {
     }
   }, 0);
 };
+
+window.triggerLoggingOutsideIframe = function () {
+  if (!window.logOutsideIframe) {
+    alert("before the iframe can trigger logging outside of it, we need to pass in a logOustideIframe function");
+  }
+  logOutsideIframe();
+}
