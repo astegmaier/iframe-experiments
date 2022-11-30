@@ -98,13 +98,18 @@ function doPostAddingScenario(iframe) {
       return;
     case "trigger-logging-outside-iframe":
       overrideConsoleForIframeFixed(iframe.contentWindow);
-      iframe.contentWindow.logOutsideIframe = logOutsideIframe;
-      iframe.contentWindow.triggerLoggingOutsideIframe()
+      iframe.contentWindow.logOutsideIframe = logOutsideIframeError;
+      iframe.contentWindow.triggerLoggingOutsideIframe();
+      return;
+    case "trigger-logging-outside-iframe-object":
+      overrideConsoleForIframeFixed(iframe.contentWindow);
+      iframe.contentWindow.logOutsideIframe = logOutsideIframeObject;
+      iframe.contentWindow.triggerLoggingOutsideIframe();
       return;
     case "trigger-logging-outside-iframe-object-created-outside-iframe":
       overrideConsoleForIframeFixed(iframe.contentWindow);
       iframe.contentWindow.logOutsideIframe = logOutsideIframeObjectCreatedOutsideIframe;
-      iframe.contentWindow.triggerLoggingOutsideIframe()
+      iframe.contentWindow.triggerLoggingOutsideIframe();
       return;
     default:
       alert("Invalid value for after-adding-iframe dropdown");
@@ -233,7 +238,7 @@ function overrideConsoleForIframeFixed(iframeWindow) {
   };
 }
 
-function logOutsideIframe() {
+function logOutsideIframeError() {
   console.error(new Error("This error was logged outside the <iframe>"));
 }
 
@@ -241,6 +246,10 @@ const errorCreatedOutsideIframe = new Error("This error object was CREATED outsi
 
 function logOutsideIframeObjectCreatedOutsideIframe() {
   console.error(errorCreatedOutsideIframe)
+}
+
+function logOutsideIframeObject() {
+  console.error({objectCreated: "outside iframe, but passing through iframe control flow."})
 }
 
 /**
