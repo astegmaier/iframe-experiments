@@ -106,9 +106,9 @@ function doPostAddingScenario(iframe) {
       iframe.contentWindow.logOutsideIframe = logOutsideIframeObject;
       iframe.contentWindow.triggerLoggingOutsideIframe();
       return;
-    case "trigger-logging-outside-iframe-object-created-outside-iframe":
+    case "trigger-logging-outside-iframe-error-created-outside-iframe":
       overrideConsoleForIframeFixed(iframe.contentWindow);
-      iframe.contentWindow.logOutsideIframe = logOutsideIframeObjectCreatedOutsideIframe;
+      iframe.contentWindow.logOutsideIframe = logOutsideIframeErrorCreatedOutsideIframe;
       iframe.contentWindow.triggerLoggingOutsideIframe();
       return;
     default:
@@ -244,7 +244,7 @@ function logOutsideIframeError() {
 
 const errorCreatedOutsideIframe = new Error("This error object was CREATED outside the iframe context");
 
-function logOutsideIframeObjectCreatedOutsideIframe() {
+function logOutsideIframeErrorCreatedOutsideIframe() {
   console.error(errorCreatedOutsideIframe)
 }
 
