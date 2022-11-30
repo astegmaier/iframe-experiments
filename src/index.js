@@ -233,7 +233,6 @@ function overrideConsoleForIframeFixed(iframeWindow) {
   };
 }
 
-
 function logOutsideIframe() {
   console.error(new Error("This error was logged outside the <iframe>"));
 }
@@ -241,7 +240,7 @@ function logOutsideIframe() {
 const errorCreatedOutsideIframe = new Error("This error object was CREATED outside the iframe context");
 
 function logOutsideIframeObjectCreatedOutsideIframe() {
-  console.error()
+  console.error(errorCreatedOutsideIframe)
 }
 
 /**
