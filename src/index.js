@@ -97,17 +97,14 @@ function doPostAddingScenario(iframe) {
       iframe.contentWindow.intentionallyLogErrorToConsole();
       return;
     case "trigger-logging-outside-iframe":
-      overrideConsoleForIframeFixed(iframe.contentWindow);
       iframe.contentWindow.logOutsideIframe = logOutsideIframeError;
       iframe.contentWindow.triggerLoggingOutsideIframe();
       return;
     case "trigger-logging-outside-iframe-object":
-      overrideConsoleForIframeFixed(iframe.contentWindow);
       iframe.contentWindow.logOutsideIframe = logOutsideIframeObject;
       iframe.contentWindow.triggerLoggingOutsideIframe();
       return;
     case "trigger-logging-outside-iframe-error-created-outside-iframe":
-      overrideConsoleForIframeFixed(iframe.contentWindow);
       iframe.contentWindow.logOutsideIframe = logOutsideIframeErrorCreatedOutsideIframe;
       iframe.contentWindow.triggerLoggingOutsideIframe();
       return;
