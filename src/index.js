@@ -64,6 +64,9 @@ function doPostAddingScenario(iframe) {
     case "log-function-in-iframe":
       iframe.contentWindow.intentionallyLogFunctionToConsole();
       return;
+    case "log-object-in-iframe":
+      iframe.contentWindow.intentionallyLogObjectToConsole();
+      return;
     case "throw-unhandled-error-in-iframe":
       iframe.contentWindow.throwUnhandledError();
       return;
@@ -78,9 +81,6 @@ function doPostAddingScenario(iframe) {
       return;
     case "log-stringified-error-in-iframe":
       iframe.contentWindow.intentionallyLogStringifiedErrorToConsole();
-      return;
-    case "log-object-in-iframe":
-      iframe.contentWindow.intentionallyLogObjectToConsole();
       return;
     case "log-weakref-object-in-iframe":
       iframe.contentWindow.intentionallyLogWeakRefObjectToConsole();
@@ -107,6 +107,10 @@ function doPostAddingScenario(iframe) {
     case "trigger-logging-outside-iframe-error-created-outside-iframe":
       iframe.contentWindow.logOutsideIframe = logOutsideIframeErrorCreatedOutsideIframe;
       iframe.contentWindow.triggerLoggingOutsideIframe();
+      return;
+    case "trigger-throw-unhandled-error-outside-iframe":
+      iframe.contentWindow.triggerThrowUnhandledError = throwUnhandledError;
+      iframe.contentWindow.triggerThrowUnhandledError();
       return;
     default:
       alert("Invalid value for after-adding-iframe dropdown");
@@ -195,8 +199,7 @@ async function updateIterationAndHeapSizeDisplay() {
   document.getElementById("memory").textContent = getUsedJsHeapSize();
 }
 
-
-/** 
+/**
  * One technique for filtering out error objects from the console that does NOT work
  * (because the global "Error" object is not equal to an Error object created (and logged) in the iframe window)
  */
@@ -242,11 +245,15 @@ function logOutsideIframeError() {
 const errorCreatedOutsideIframe = new Error("This error object was CREATED outside the iframe context");
 
 function logOutsideIframeErrorCreatedOutsideIframe() {
-  console.error(errorCreatedOutsideIframe)
+  console.error(errorCreatedOutsideIframe);
 }
 
 function logOutsideIframeObject() {
-  console.error({objectCreated: "outside iframe, but passing through iframe control flow."})
+  console.error({ objectCreated: "outside iframe, but passing through iframe control flow." });
+}
+
+function throwUnhandledError() {
+  throw new Error("This error was thrown outside the iframe, but triggered from within it.");
 }
 
 /**
