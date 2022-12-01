@@ -162,7 +162,10 @@ goOrStopButton.onclick = async () => {
     goOrStopButton.textContent = "Go!";
     return;
   }
+  runLoop();
+};
 
+async function runLoop() {
   goOrStopButton.textContent = "Stop";
   isLoopOn = true;
   while (isLoopOn) {
@@ -174,6 +177,20 @@ goOrStopButton.onclick = async () => {
       goOrStopButton.textContent = "Go!";
     }
   }
+}
+
+// For cases where we throw an unhandled error in the parent window, we need to re-start the iteration
+window.onunhandledrejection = async () => {
+  await removeIframe(); // Cleanup previous iframe that triggered the unhandled exception.
+  const shouldRestart = iteration <= document.getElementById("stop-at-iteration-number").value;
+
+  if (!shouldRestart) {
+    isLoopOn = false;
+    goOrStopButton.textContent = "Go!";
+    return;
+  }
+
+  runLoop();
 };
 
 updateIterationAndHeapSizeDisplay();
