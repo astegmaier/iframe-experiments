@@ -1,3 +1,5 @@
+const myGiantArray = new Array(1000000).fill(1234567890);
+
 window.logHelloWorld = function () {
   console.log("Hello world, from inside the iframe!");
 };
@@ -14,6 +16,11 @@ window.intentionallyLogErrorToConsole = function () {
 window.intentionallyLogFunctionToConsole = function () {
   const myFunc = () => "foo";
   console.error(myFunc);
+};
+
+window.intentionallyLogStringifiedFunctionToConsole = function () {
+  const myFunc = () => "foo";
+  console.error(myFunc.toString());
 };
 
 window.intentionallyLogStructuredCloneErrorToConsole = function () {
@@ -61,4 +68,4 @@ window.triggerLoggingOutsideIframe = function () {
     alert("before the iframe can trigger logging outside of it, we need to pass in a logOustideIframe function");
   }
   logOutsideIframe();
-}
+};

@@ -64,6 +64,9 @@ function doPostAddingScenario(iframe) {
     case "log-function-in-iframe":
       iframe.contentWindow.intentionallyLogFunctionToConsole();
       return;
+    case "log-stringified-in-iframe":
+      iframe.contentWindow.intentionallyLogStringifiedFunctionToConsole();
+      return;
     case "log-object-in-iframe":
       iframe.contentWindow.intentionallyLogObjectToConsole();
       return;
