@@ -131,3 +131,11 @@ window.triggerConsoleProfile = function () {
 window.triggerConsoleTimeStamp = function () {
   console.timeStamp({ a: 1 });
 };
+
+window.triggerConsoleTrace = function () {
+  console.trace("My Message");
+};
+
+window.triggerConsoleTraceWithObject = function () {
+  console.trace({ a: 1 });
+};

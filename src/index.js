@@ -151,6 +151,12 @@ function doPostAddingScenario(iframe) {
     case "trigger-console-timestamp-in-iframe":
       iframe.contentWindow.triggerConsoleTimeStamp();
       return;
+    case "trigger-console-trace-in-iframe":
+      iframe.contentWindow.triggerConsoleTrace();
+      return;
+    case "trigger-console-trace-with-object-in-iframe":
+      iframe.contentWindow.triggerConsoleTraceWithObject();
+      return;
     default:
       alert("Invalid value for after-adding-iframe dropdown");
       return;
