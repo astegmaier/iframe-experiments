@@ -115,6 +115,42 @@ function doPostAddingScenario(iframe) {
       iframe.contentWindow.triggerThrowUnhandledError = throwUnhandledError;
       iframe.contentWindow.triggerThrowUnhandledError();
       return;
+    case "trigger-console-assert-in-iframe":
+      iframe.contentWindow.triggerConsoleAssert();
+      return;
+    case "trigger-console-count-in-iframe":
+      iframe.contentWindow.triggerConsoleCount();
+      return;
+    case "trigger-console-dir-in-iframe":
+      iframe.contentWindow.triggerConsoleDir();
+      return;
+    case "trigger-console-dirxml-in-iframe":
+      iframe.contentWindow.triggerConsoleDirXml();
+      return;
+    case "trigger-console-group-in-iframe":
+      iframe.contentWindow.triggerConsoleGroup();
+      return;
+    case "trigger-console-group-with-object-in-iframe":
+      iframe.contentWindow.triggerConsoleGroupWithObject();
+      return;
+    case "trigger-console-group-collapsed-in-iframe":
+      iframe.contentWindow.triggerConsoleGroupCollapsed();
+      return;
+    case "trigger-console-table-in-iframe":
+      iframe.contentWindow.triggerConsoleTable();
+      return;
+    case "trigger-console-time-without-end-in-iframe":
+      iframe.contentWindow.triggerConsoleTimeWithoutTimeEnd();
+      return;
+    case "trigger-console-time-with-object-in-iframe":
+      iframe.contentWindow.triggerConsoleTimeWithObject();
+      return;
+    case "trigger-console-profile-in-iframe":
+      iframe.contentWindow.triggerConsoleProfile();
+      return;
+    case "trigger-console-timestamp-in-iframe":
+      iframe.contentWindow.triggerConsoleTimeStamp();
+      return;
     default:
       alert("Invalid value for after-adding-iframe dropdown");
       return;

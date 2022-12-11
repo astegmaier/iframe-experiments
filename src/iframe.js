@@ -69,3 +69,64 @@ window.triggerLoggingOutsideIframe = function () {
   }
   logOutsideIframe();
 };
+
+window.triggerConsoleAssert = function () {
+  console.assert(1, 2);
+};
+
+window.triggerConsoleCount = function () {
+  console.count();
+  console.count("abc");
+};
+
+window.triggerConsoleDir = function () {
+  console.dir({ a: { b: 1 } });
+};
+
+window.triggerDirXml = function () {
+  console.dirxml(document.createElement("div"));
+};
+
+window.triggerConsoleGroup = function () {
+  console.group("myGroup");
+  console.log("something");
+  console.groupEnd();
+};
+
+window.triggerConsoleGroupWithObject = function () {
+  const myObj = { a: 1 };
+  console.group(myObj);
+  console.log("something");
+  console.groupEnd();
+};
+
+window.triggerConsoleGroupCollapsed = function () {
+  const myObj = { a: 1 };
+  console.groupCollapsed(myObj);
+  console.log("something");
+  console.groupEnd();
+};
+
+window.triggerConsoleTable = function () {
+  console.table(["apples", "oranges", "bananas"]);
+};
+
+window.triggerConsoleTimeWithoutTimeEnd = function () {
+  console.time("myLabel");
+};
+
+window.triggerConsoleTimeWithObject = function () {
+  const myObj = { a: 1 };
+  console.time(myObj);
+  console.timeLog(myObj);
+  console.timeEnd(myObj);
+};
+
+window.triggerConsoleProfile = function () {
+  const myObj = { a: 1 };
+  console.profile(myObj);
+};
+
+window.triggerConsoleTimeStamp = function () {
+  console.timeStamp({ a: 1 });
+};

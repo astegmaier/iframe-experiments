@@ -25,7 +25,7 @@
       <!-- <option value="log-hello-world-inside-iframe">Log "Hello World" INSIDE iframe -- (no leak)</option> -->
       <option value="log-error-in-iframe">Log error INSIDE iframe -- (**CAUSES A LEAK**)</option>
       <option value="log-function-in-iframe">Log function INSIDE iframe -- (**CAUSES A LEAK**)</option>
-      <option value="log-stringified-in-iframe">Log stringified function INSIDE iframe -- (TBD)</option>
+      <!-- <option value="log-stringified-in-iframe">Log stringified function INSIDE iframe -- (no leak)</option> -->
       <option value="log-object-in-iframe">Log an object with properties INSIDE iframe -- (**CAUSES A LEAK**)</option>
       <option value="throw-unhandled-error-in-iframe">Throw unhandled error INSIDE iframe -- (**CAUSES A LEAK**)</option>
       <option value="throw-handled-error-in-iframe">Handle a thrown error INSIDE iframe -- (no leak)</option>
@@ -39,7 +39,19 @@
       <option value="trigger-logging-outside-iframe">Trigger logging newly-created error OUTSIDE the iframe from within the IFRAME -- (**CAUSES A LEAK**)</option>
       <option value="trigger-logging-outside-iframe-object">Trigger logging newly-created non-error object OUTSIDE the iframe from within the IFRAME -- (no leak)</option>
       <!-- <option value="trigger-logging-outside-iframe-error-created-outside-iframe">Trigger logging previously-created error OUTSIDE the iframe from within the IFRAME -- (no leak)</option> -->
-      <option value="trigger-throw-unhandled-error-outside-iframe">Throw an error OUTSIDE the iframe from within the IFRAME -- (**CAUSES A LEAK**)</option>
+      <!-- <option value="trigger-throw-unhandled-error-outside-iframe">Throw an error OUTSIDE the iframe from within the IFRAME -- (**CAUSES A LEAK**)</option> -->
+      <!-- <option value="trigger-console-assert-in-iframe">Call console assert INSIDE the iframe -- (**CAUSES A LEAK**)</option> -->
+      <!-- <option value="trigger-console-count-in-iframe">Call console count INSIDE the iframe -- (no leak)</option> -->
+      <!-- <option value="trigger-console-dir-in-iframe">Call console dir INSIDE the iframe -- (**CAUSES A LEAK**)</option> -->
+      <!-- <option value="trigger-console-dirxml-in-iframe">Call console dirxml INSIDE the iframe -- (**CAUSES A LEAK**)</option> -->
+      <!-- <option value="trigger-console-group-in-iframe">Call console group INSIDE the iframe -- (no leak)</option> -->
+      <!-- <option value="trigger-console-group-with-object-in-iframe">Call console group with an object INSIDE the iframe -- (**CAUSES A LEAK**)</option> -->
+      <!-- <option value="trigger-console-group-collapsed-in-iframe">Call console groupCollapsed INSIDE the iframe -- (**CAUSES A LEAK**)</option> -->
+      <!-- <option value="trigger-console-table-in-iframe">Call console table INSIDE the iframe -- (**CAUSES A LEAK**)</option> -->
+      <!-- <option value="trigger-console-time-without-end-in-iframe">Call console time without timeEnd INSIDE the iframe -- (no leak)</option> -->
+      <!-- <option value="trigger-console-time-with-object-in-iframe">Call console time with an object INSIDE the iframe -- (no leak)</option> -->
+      <!-- <option value="trigger-console-profile-in-iframe">Call console profile with an object INSIDE the iframe -- (no leak)</option> -->
+      <!-- <option value="trigger-console-timestamp-in-iframe">Call console timeStamp with an object INSIDE the iframe -- (no leak)</option> -->
     </select>
 
     <button id="add-iframe">Add iframe</button>
