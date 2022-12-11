@@ -77,6 +77,7 @@ window.triggerConsoleAssert = function () {
 window.triggerConsoleCount = function () {
   console.count();
   console.count("abc");
+  console.count({ a: 1 });
 };
 
 window.triggerConsoleDir = function () {
