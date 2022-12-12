@@ -157,6 +157,9 @@ function doPostAddingScenario(iframe) {
     case "trigger-console-trace-with-object-in-iframe":
       iframe.contentWindow.triggerConsoleTraceWithObject();
       return;
+    case "trigger-console-log-object-with-substitution-in-iframe":
+      iframe.contentWindow.triggerConsoleLogObjectWithSubstitution();
+      return;
     default:
       alert("Invalid value for after-adding-iframe dropdown");
       return;

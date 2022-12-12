@@ -139,3 +139,7 @@ window.triggerConsoleTrace = function () {
 window.triggerConsoleTraceWithObject = function () {
   console.trace({ a: 1 });
 };
+
+window.triggerConsoleLogObjectWithSubstitution = function () {
+  console.log("a string: %s; an integer: %i; an object: %o", "foo", 1.23, { a: 1 }); // The leak goes away if you stringify a param.
+};
