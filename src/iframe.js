@@ -143,3 +143,7 @@ window.triggerConsoleTraceWithObject = function () {
 window.triggerConsoleLogObjectWithSubstitution = function () {
   console.log("a string: %s; an integer: %i; an object: %o", "foo", 1.23, { a: 1 }); // The leak goes away if you stringify a param.
 };
+
+window.triggerAsyncThrowError = async function () {
+  throw new Error("MyAsyncError");
+};

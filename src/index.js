@@ -160,6 +160,9 @@ function doPostAddingScenario(iframe) {
     case "trigger-console-log-object-with-substitution-in-iframe":
       iframe.contentWindow.triggerConsoleLogObjectWithSubstitution();
       return;
+    case "catch-async-thrown-error-from-iframe":
+      throwAsyncErrorInIframeAndCatchItOutside(iframe);
+      return;
     default:
       alert("Invalid value for after-adding-iframe dropdown");
       return;
@@ -351,4 +354,12 @@ function overrideConsoleErrorToStringifyNonPrimitives(iframeWindow) {
       originalConsoleError(...newArgs);
     }
   };
+}
+
+async function throwAsyncErrorInIframeAndCatchItOutside(iframe) {
+  try {
+    await iframe.contentWindow.triggerAsyncThrowError();
+  } catch (e) {
+    console.log("Could not load", e);
+  }
 }
