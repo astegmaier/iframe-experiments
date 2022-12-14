@@ -70,6 +70,14 @@ window.triggerLoggingOutsideIframe = function () {
   logOutsideIframe();
 };
 
+window.getObject = function () {
+  return { message: "this object was created inside the iframe" };
+};
+
+window.getError = function () {
+  return new Error("This error was created inside the iframe");
+};
+
 window.triggerConsoleAssert = function () {
   console.assert(1, 2);
 };

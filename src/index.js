@@ -111,6 +111,12 @@ function doPostAddingScenario(iframe) {
       iframe.contentWindow.logOutsideIframe = logOutsideIframeErrorCreatedOutsideIframe;
       iframe.contentWindow.triggerLoggingOutsideIframe();
       return;
+    case "log-outside-iframe-object-created-inside-iframe":
+      console.log(iframe.contentWindow.getObject());
+      return;
+    case "log-outside-iframe-error-created-inside-iframe":
+      console.log(iframe.contentWindow.getError());
+      return;
     case "trigger-throw-unhandled-error-outside-iframe":
       iframe.contentWindow.triggerThrowUnhandledError = throwUnhandledError;
       iframe.contentWindow.triggerThrowUnhandledError();
