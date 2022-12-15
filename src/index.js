@@ -169,6 +169,12 @@ function doPostAddingScenario(iframe) {
     case "catch-async-thrown-error-from-iframe":
       throwAsyncErrorInIframeAndCatchItOutside(iframe);
       return;
+    case "store-iframe-objects-in-weak-set":
+      storeIframeInWeakSet(iframe);
+      return;
+    case "store-iframe-window-objects-in-weak-set":
+      storeIframeWindowInWeakSet(iframe);
+      return;
     default:
       alert("Invalid value for after-adding-iframe dropdown");
       return;
@@ -368,4 +374,16 @@ async function throwAsyncErrorInIframeAndCatchItOutside(iframe) {
   } catch (e) {
     console.log("Could not load", e);
   }
+}
+
+const iframeObjects = new WeakSet();
+
+function storeIframeInWeakSet(iframe) {
+  iframeObjects(iframe);
+}
+
+const iframeWindowObjects = new WeakSet();
+
+function storeIframeWindowInWeakSet(iframe) {
+  iframeWindowObjects.add(iframe.contentWindow);
 }
