@@ -76,6 +76,10 @@ function doPostAddingScenario(iframe) {
     case "throw-handled-error-in-iframe":
       iframe.contentWindow.throwHandledError();
       return;
+    case "throw-unhandled-error-in-iframe-then-clear-console":
+      iframe.contentWindow.throwUnhandledError();
+      setTimeout(() => console.clear(), 100);
+      return;
     case "log-error-outside":
       console.log(new Error("Intentionally logging error on outside of iframe"));
       return;
