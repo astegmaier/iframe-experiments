@@ -118,6 +118,9 @@ function doPostAddingScenario(iframe) {
     case "log-outside-iframe-object-created-inside-iframe":
       console.log(iframe.contentWindow.getObject());
       return;
+    case "log-outside-iframe-sub-object-created-inside-iframe":
+      console.log({ name: "parent-window-object", iframeObj: iframe.contentWindow.getObject() });
+      return;
     case "log-outside-iframe-error-created-inside-iframe":
       console.log(iframe.contentWindow.getError());
       return;
