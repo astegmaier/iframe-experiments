@@ -71,7 +71,13 @@ window.triggerLoggingOutsideIframe = function () {
 };
 
 window.getObject = function () {
-  return { message: "this object was created inside the iframe" };
+  Object.setPrototypeOf(obj, null);
+};
+
+window.getObjectWithNullProto = function () {
+  const obj = { message: "this object was created inside the iframe" };
+  Object.setPrototypeOf(obj, null);
+  return obj;
 };
 
 window.getError = function () {
