@@ -107,6 +107,12 @@ function doPostAddingScenario(iframe) {
       iframe.contentWindow.logOutsideIframe = logOutsideIframeError;
       iframe.contentWindow.triggerLoggingOutsideIframe();
       return;
+    case "trigger-logging-outside-iframe-with-override":
+      overrideErrorProto();
+      iframe.contentWindow.logOutsideIframe = logOutsideIframeError;
+      iframe.contentWindow.triggerLoggingOutsideIframe();
+      restoreErrorProto();
+      return;
     case "trigger-logging-outside-iframe-object":
       iframe.contentWindow.logOutsideIframe = logOutsideIframeObject;
       iframe.contentWindow.triggerLoggingOutsideIframe();
@@ -393,4 +399,20 @@ const iframeWindowObjects = new WeakSet();
 
 function storeIframeWindowInWeakSet(iframe) {
   iframeWindowObjects.add(iframe.contentWindow);
+}
+
+let originalErrorCtor = window.Error;
+
+function overrideErrorProto() {
+  function ErrorOverride(message) {
+    this.message = message;
+  }
+  ErrorOverride.prototype = {
+    overridePrototype: "hello",
+  };
+  window.Error = ErrorOverride;
+}
+
+function restoreErrorProto() {
+  window.Error = originalErrorCtor;
 }
