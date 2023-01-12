@@ -107,6 +107,10 @@ function doPostAddingScenario(iframe) {
       iframe.contentWindow.logOutsideIframe = logOutsideIframeError;
       iframe.contentWindow.triggerLoggingOutsideIframe();
       return;
+    case "trigger-logging-outside-iframe-structured-clone":
+      iframe.contentWindow.logOutsideIframe = logOutsideIframeErrorStructuredClone;
+      iframe.contentWindow.triggerLoggingOutsideIframe();
+      return;
     case "trigger-logging-outside-iframe-with-override":
       overrideErrorProto();
       iframe.contentWindow.logOutsideIframe = logOutsideIframeError;
@@ -126,6 +130,12 @@ function doPostAddingScenario(iframe) {
       return;
     case "log-outside-iframe-sub-object-created-inside-iframe":
       console.log({ name: "parent-window-object", iframeObj: iframe.contentWindow.getObject() });
+      return;
+    case "log-outside-iframe-object-created-inside-iframe-structured-clone":
+      console.log(structuredClone(iframe.contentWindow.getObject()));
+      return;
+    case "log-outside-iframe-sub-object-created-inside-iframe-structured-clone":
+      console.log(structuredClone({ name: "parent-window-object", iframeObj: iframe.contentWindow.getObject() }));
       return;
     case "log-outside-iframe-error-created-inside-iframe":
       console.log(iframe.contentWindow.getError());
@@ -336,6 +346,10 @@ function overrideConsoleForIframeFixed(iframeWindow) {
 
 function logOutsideIframeError() {
   console.error(new Error("This error was logged outside the <iframe>"));
+}
+
+function logOutsideIframeErrorStructuredClone() {
+  console.error(structuredClone(new Error("This error was logged outside the <iframe>")));
 }
 
 const errorCreatedOutsideIframe = new Error("This error object was CREATED outside the iframe context");
