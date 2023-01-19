@@ -23,26 +23,26 @@
       <!-- <option value="nothing">Do nothing -- (no leak)</option> -->
       <!-- <option value="change-iframe-background">Change iframe background -- (no leak)</option> -->
       <!-- <option value="log-hello-world-inside-iframe">Log "Hello World" INSIDE iframe -- (no leak)</option> -->
-      <option value="log-error-in-iframe">Log error INSIDE iframe -- (**leak in 108; no leak in 109**)</option>
-      <option value="log-function-in-iframe">Log function INSIDE iframe -- (**leak in 108; no leak in 109**)</option>
+      <!-- <option value="log-error-in-iframe">Log error INSIDE iframe -- (**leak in 108; no leak in 109**)</option> -->
+      <!-- <option value="log-function-in-iframe">Log function INSIDE iframe -- (**leak in 108; no leak in 109**)</option> -->
       <!-- <option value="log-stringified-in-iframe">Log stringified function INSIDE iframe -- (no leak)</option> -->
-      <option value="log-object-in-iframe">Log an object with properties INSIDE iframe -- (**leak in 108; no leak in 109**)</option>
+      <option value="log-object-in-iframe">Log an object INSIDE iframe -- (**leak in 108; no leak in 109**)</option>
       <option value="throw-unhandled-error-in-iframe">Throw unhandled error INSIDE iframe -- (**leak in 108; no leak in 109**)</option>
       <!-- <option value="throw-handled-error-in-iframe">Handle a thrown error INSIDE iframe -- (no leak)</option> -->
       <!-- <option value="throw-unhandled-error-in-iframe-then-clear-console">
         Throw an unhandled error INSIDE iframe, then clear the console -- (no leak)
       </option> -->
       <!-- <option value="log-error-outside">Log error *OUTSIDE* of iframe -- (no leak)</option> -->
-      <option value="log-structured-clone-error-in-iframe">Log structured clone error INSIDE iframe -- (**leak in 108; no leak in 109**)</option>
+      <!-- <option value="log-structured-clone-error-in-iframe">Log structured clone error INSIDE iframe -- (**leak in 108; no leak in 109**)</option> -->
       <!-- <option value="log-stringified-error-in-iframe">Log stringified error INSIDE iframe -- (no leak)</option> -->
-      <option value="log-weakref-object-in-iframe">Log a WeakRef object INSIDE iframe -- (**leak in 108; no leak in 109**)</option>
+      <!-- <option value="log-weakref-object-in-iframe">Log a WeakRef object INSIDE iframe -- (**leak in 108; no leak in 109**)</option> -->
       <!-- <option value="log-pretty-print-string-in-iframe">Log a pretty-print string INSIDE iframe -- (no leak)</option> -->
-      <option value="override-console-error-in-iframe-broken">
+      <!-- <option value="override-console-error-in-iframe-broken">
         Log error INSIDE iframe, with BROKEN console patch -- (**leak in 108; no leak in 109**)
-      </option>
+      </option> -->
       <!-- <option value="override-console-error-in-iframe-fixed">Log error INSIDE iframe, with FIXED console patch -- (no leak)</option> -->
       <option value="trigger-logging-outside-iframe">
-        Trigger logging newly-created error OUTSIDE the iframe from within the IFRAME -- (**CAUSES A LEAK IN 108 AND 109**)
+        Outside the iframe, log an Error whose call stack includes iframe code -- (**CAUSES A LEAK IN 108 AND 109**)
       </option>
       <!-- <option value="trigger-logging-outside-iframe-structured-clone">
         Trigger logging the structured clone of a newly-created error OUTSIDE the iframe from within the IFRAME -- (no leak)
@@ -66,18 +66,18 @@
       <!-- <option value="log-outside-iframe-sub-object-created-inside-iframe-structured-clone">
         Outside the iframe, log a structured clone of an object that has a property that contains an object created inside the iframe -- (no leak)
       </option> -->
-      <option value="log-outside-iframe-object-created-inside-iframe">
+      <!-- <option value="log-outside-iframe-object-created-inside-iframe">
         Outside the iframe, log an error that was created inside the iframe -- (**CAUSES A LEAK IN 108 AND 109**)
-      </option>
-      <option value="log-outside-iframe-object-created-inside-iframe-with-null-prototype">
+      </option> -->
+      <!-- <option value="log-outside-iframe-object-created-inside-iframe-with-null-prototype">
         Outside the iframe, log an object with a null prototype that was created inside the iframe-- (**CAUSES A LEAK IN 108 AND 109**)
-      </option>
+      </option> -->
       <!-- <option value="trigger-logging-outside-iframe-error-created-outside-iframe">
         Trigger logging previously-created error OUTSIDE the iframe from within the IFRAME -- (no leak)
       </option> -->
-      <option value="trigger-throw-unhandled-error-outside-iframe">
+      <!-- <option value="trigger-throw-unhandled-error-outside-iframe">
         Throw an error OUTSIDE the iframe from within the IFRAME -- (**CAUSES A LEAK IN 108 AND 109**)
-      </option>
+      </option> -->
 
       <!-- Test other console methods -->
       <!-- <option value="trigger-console-assert-in-iframe">Call console assert INSIDE the iframe -- (**CAUSES A LEAK IN 108**)</option> -->
@@ -94,9 +94,9 @@
       <!-- <option value="trigger-console-timestamp-in-iframe">Call console timeStamp with an object INSIDE the iframe -- (no leak)</option> -->
       <!-- <option value="trigger-console-trace-in-iframe">Call console trace INSIDE the iframe -- (no leak)</option> -->
       <!-- <option value="trigger-console-trace-with-object-in-iframe">Call console trace with an object INSIDE the iframe -- (**CAUSES A LEAK IN 108**)</option> -->
-      <option value="trigger-console-log-object-with-substitution-in-iframe">
+      <!-- <option value="trigger-console-log-object-with-substitution-in-iframe">
         Call console log with an object with string substitution -- (**CAUSES A LEAK IN 108**)
-      </option>
+      </option> -->
 
       <!-- Test catching and logging thrown errors -->
       <!-- <option value="catch-async-thrown-error-from-iframe">
@@ -104,8 +104,8 @@
       </option> -->
 
       <!-- Test WeakSets -->
-      <option value="store-iframe-objects-in-weak-set">Test storing iframe objects with a WeakSet - (no leak)</option>
-      <option value="store-iframe-window-objects-in-weak-set">Test storing iframe window objects with a WeakSet - (no leak)</option>
+      <!-- <option value="store-iframe-objects-in-weak-set">Test storing iframe objects with a WeakSet - (no leak)</option> -->
+      <!-- <option value="store-iframe-window-objects-in-weak-set">Test storing iframe window objects with a WeakSet - (no leak)</option> -->
       -->
     </select>
 
