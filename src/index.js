@@ -201,6 +201,12 @@ function doPostAddingScenario(iframe) {
     case "store-iframe-window-objects-in-weak-set":
       storeIframeWindowInWeakSet(iframe);
       return;
+    case "leak-the-iframe-element":
+      window.leaker.leakSomething(iframe);
+      return;
+    case "leak-the-iframe-content-window":
+      window.leaker.leakSomething(iframe.contentWindow);
+      return;
     default:
       alert("Invalid value for after-adding-iframe dropdown");
       return;
@@ -433,3 +439,11 @@ function overrideErrorProto() {
 function restoreErrorProto() {
   window.Error = originalErrorCtor;
 }
+
+class LeakedStuff {
+  stuff = new Set();
+  leakSomething(obj) {
+    this.stuff.add(obj);
+  }
+}
+window.leaker = new LeakedStuff();

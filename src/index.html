@@ -26,6 +26,8 @@
       <!-- <option value="log-error-in-iframe">Log error INSIDE iframe -- (**leak in 108; no leak in 109**)</option> -->
       <!-- <option value="log-function-in-iframe">Log function INSIDE iframe -- (**leak in 108; no leak in 109**)</option> -->
       <!-- <option value="log-stringified-in-iframe">Log stringified function INSIDE iframe -- (no leak)</option> -->
+      <option value="leak-the-iframe-element">Intentionally retain a reference to the HTMLIframeElement -- (No Leak)</option>
+      <option value="leak-the-iframe-content-window">Intentionally retain a reference to the HTMLFrameElement's contentWindow -- (Leak)</option>
       <option value="log-object-in-iframe">Log an object INSIDE iframe -- (**leak in 108; no leak in 109**)</option>
       <option value="throw-unhandled-error-in-iframe">Throw unhandled error INSIDE iframe -- (**leak in 108; no leak in 109**)</option>
       <!-- <option value="throw-handled-error-in-iframe">Handle a thrown error INSIDE iframe -- (no leak)</option> -->
